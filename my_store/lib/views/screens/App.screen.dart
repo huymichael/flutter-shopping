@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_store/utilities/app-theme.uti.dart';
+import 'package:my_store/views/screens/start-screen/start.screen.dart';
 
 class App extends StatefulWidget {
   @override
@@ -11,14 +12,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme.customTheme,
-      home: Scaffold(
-        body: Container(
-          child: Center(
-              child: Text(
-            'The quick brown fox jumps',
-          )),
-        ),
-      ),
+      home: StartScreen(),
     );
   }
 }
