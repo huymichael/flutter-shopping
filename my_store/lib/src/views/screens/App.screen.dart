@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_store/utilities/app-theme.uti.dart';
-import 'package:my_store/views/screens/start-screen/start.screen.dart';
+import 'package:my_store/src/utilities/app-theme.utils.dart';
+
+import '../../routes/routes.dart';
 
 class App extends StatefulWidget {
   @override
@@ -11,8 +12,9 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: 'start',
       theme: AppTheme.customTheme,
-      home: StartScreen(),
+      onGenerateRoute: AppRoutes.router.generator,
     );
   }
 }
