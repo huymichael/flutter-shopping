@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
+import 'package:my_store/src/routes/routes-path.dart';
 import 'package:my_store/src/shared/widgets/round-button.widget.dart';
 
 class StartScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class StartScreen extends StatelessWidget {
               RoundedButton(
                 buttonLabel: 'Sign in',
                 onPress: () {
-                  Navigator.pushNamed(context, 'login');
+                  Navigator.pushNamed(context, RoutingPath.loginRoute);
                 },
               ),
               RoundedButton(
