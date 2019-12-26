@@ -4,43 +4,30 @@ import 'package:my_store/src/utils/app-theme.utils.dart';
 class RoundedButton extends StatelessWidget {
   final String buttonLabel;
   final Function onPress;
-  final bool isOutlineButton;
+  final Color fillColor;
+  final Color textColor;
+  final BorderSide buttonBorder;
 
   RoundedButton(
       {@required this.buttonLabel,
       @required this.onPress,
-      this.isOutlineButton = false});
+      this.fillColor,
+      this.textColor,
+      this.buttonBorder});
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      elevation: 0.0,
-      onPressed: onPress,
-      textColor: isOutlineButton ? AppTheme.primaryColor : Colors.white,
+      elevation: 5.0,
+      height: 50.0,
+      child: Container(child: Text(buttonLabel)),
+      color: fillColor ?? AppTheme.sunsetOrangeColor,
+      textColor: textColor ?? Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20.0),
-        side: isOutlineButton
-            ? BorderSide(
-                width: 2,
-                style: BorderStyle.solid,
-                color: AppTheme.primaryColor)
-            : BorderSide.none,
+        side: buttonBorder ?? BorderSide.none,
       ),
-      height: 50.0,
-      color: isOutlineButton ? Colors.white : AppTheme.primaryColor,
-      child: Text(
-        buttonLabel.toUpperCase(),
-      ),
+      onPressed: onPress,
     );
-
-//    return FlatButton(
-//      onPressed: onPress,
-//      child: Text(buttonLabel),
-//      shape: RoundedRectangleBorder(
-//        borderRadius: BorderRadius.circular(30.0),
-//        side: BorderSide(color: Colors.red),
-//      ),
-//      color: Colors.lightBlueAccent,
-//    );
   }
 }

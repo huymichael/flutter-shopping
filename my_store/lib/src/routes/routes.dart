@@ -17,6 +17,7 @@ class AppRoutes {
       );
     });
     router.define(RoutingPath.rootRoute, handler: rootHandler);
-    router.define(RoutingPath.loginRoute, handler: loginHandler);
+    router.define(RoutingPath.loginRoute,
+        handler: loginHandler, transitionType: TransitionType.inFromRight);
   }
 }
