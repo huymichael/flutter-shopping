@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
-import 'package:my_store/src/routes/routes-path.dart';
-import 'package:my_store/src/shared/widgets/round-button.widget.dart';
+import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
-import 'package:my_store/src/utils/app-theme.utils.dart';
+import 'package:my_store/src/utils/app_theme.utils.dart';
 
 class StartScreen extends StatelessWidget {
   @override

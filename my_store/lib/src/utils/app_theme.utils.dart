@@ -21,7 +21,7 @@ class AppTheme {
     body1: TextStyle(fontFamily: 'Roboto Regular'),
   );
   static final customTheme = ThemeData(
-      primaryColor: AppTheme.primaryColor,
+      primaryColor: AppTheme.sunsetOrangeColor,
       scaffoldBackgroundColor: AppTheme.aliceBlue,
       appBarTheme: AppBarTheme(
         color: AppTheme.primaryColor,

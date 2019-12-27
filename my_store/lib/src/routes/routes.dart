@@ -1,8 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_store/src/routes/routes-handler.dart';
-import 'package:my_store/src/routes/routes-path.dart';
+import 'package:my_store/src/routes/routes_handler.dart';
+import 'package:my_store/src/routes/routes_path.dart';
 
 class AppRoutes {
   static Router router = Router();

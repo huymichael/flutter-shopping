@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_store/src/utils/app-theme.utils.dart';
+import 'package:my_store/src/utils/app_theme.utils.dart';
 
 class StylingConstant {
   static const TextStyle kStartScreenHeader = TextStyle(
