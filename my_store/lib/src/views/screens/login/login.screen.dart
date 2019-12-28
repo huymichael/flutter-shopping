@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_store/src/shared/widgets/card_with_overlay_button.widget.dart';
 import 'package:my_store/src/shared/widgets/rounded_text_field.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
+import 'package:my_store/src/utils/app_theme.utils.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -13,16 +14,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            _buildBackground(),
-            _buildLoginScreen(context),
-            BackButton(
-              color: Colors.white,
-            ),
-          ],
+      backgroundColor: Color(0),
+      body: Container(
+        child: SafeArea(
+          child: Stack(
+            children: <Widget>[
+              _buildBackground(),
+              _buildLoginScreen(),
+              _newUserSection(),
+              BackButton(
+                color: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -40,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildLoginScreen(BuildContext context) {
+  Widget _buildLoginScreen() {
     return CardWithOverlayButton(
       widget: _buildLoginForm(),
       onPressButton: () {},
@@ -73,7 +77,54 @@ class _LoginScreenState extends State<LoginScreen> {
           prefixIcon: Icon(Icons.lock_outline),
           placeHolder: 'Password',
         ),
+        Container(
+          alignment: Alignment.centerRight,
+          child: FlatButton(
+            onPressed: () {
+              print('forgot password');
+            },
+            child: Text(
+              'Forgot password?',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+        ),
       ],
+    );
+  }
+
+  Widget _newUserSection() {
+    return Container(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        alignment: Alignment.center,
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'New user?',
+              style: TextStyle(fontSize: 16.0, color: Colors.white),
+            ),
+            Spacing(
+              horizontal: 5.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                print('Sign up new account');
+              },
+              child: Text(
+                'Sign up',
+                style: TextStyle(
+                    color: AppTheme.warningColor,
+                    fontSize: 16.0,
+                    decoration: TextDecoration.underline),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
