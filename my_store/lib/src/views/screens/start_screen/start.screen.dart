@@ -76,7 +76,9 @@ class StartScreen extends StatelessWidget {
                     color: AppTheme.sunsetOrangeColor,
                     style: BorderStyle.solid,
                   ),
-                  onPress: () {},
+                  onPress: () {
+                    Navigator.pushNamed(context, RoutingPath.registerRoute);
+                  },
                 ),
               ],
             ),

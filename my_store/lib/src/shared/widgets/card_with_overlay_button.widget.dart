@@ -27,7 +27,7 @@ class CardWithOverlayButton extends StatelessWidget {
         children: <Widget>[
           Card(
             margin: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.1),
+                horizontal: MediaQuery.of(context).size.width * 0.05),
             elevation: 2.0,
             color: cardColor ?? Colors.white,
             shape: RoundedRectangleBorder(
