@@ -13,12 +13,15 @@ class AppTheme {
   static const Color sunsetOrangeColor = Color(0xff99332E);
   static const Color sunsetOrangeLightColor = Color(0xffbf403a);
   static const Color sunsetOrangeDarkColor = Color(0xff7a2925);
-
+  static const Color shamrockGreenColor = Color(0xff0D9F67);
+  static const Color sourDoughColor = Color(0xffC5B08E);
+  static const Color codGreyColor = Color(0xff303132);
+  static const Color raffiaColor = Color(0xffDBC8A8);
   static const TextTheme customTextTheme = TextTheme(
-    headline: TextStyle(fontFamily: 'Roboto Bold'),
-    title: TextStyle(fontFamily: 'Roboto Bold'),
-    subhead: TextStyle(fontFamily: 'Roboto Light'),
-    body1: TextStyle(fontFamily: 'Roboto Regular'),
+    headline: TextStyle(fontFamily: 'OpenSans Bold'),
+    title: TextStyle(fontFamily: 'OpenSans Bold'),
+    subhead: TextStyle(fontFamily: 'OpenSans Light'),
+    body1: TextStyle(fontFamily: 'OpenSans'),
   );
   static final customTheme = ThemeData(
       primaryColor: AppTheme.sunsetOrangeColor,

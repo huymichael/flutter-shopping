@@ -14,11 +14,9 @@ class ThemeBackgroundImage extends StatelessWidget {
       position: DecorationPosition.background,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(imageUrl),
-          fit: BoxFit.cover,
-          colorFilter:
-              colorFilter ?? ColorFilter.mode(Colors.black26, BlendMode.darken),
-        ),
+            image: AssetImage(imageUrl),
+            fit: BoxFit.cover,
+            colorFilter: colorFilter),
       ),
       child: widget,
     );

@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/routes/routes_path.dart';
 import 'package:my_store/src/shared/widgets/card_with_overlay_button.widget.dart';
 import 'package:my_store/src/shared/widgets/rounded_text_field.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
+import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
 import 'package:my_store/src/utils/app_theme.utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,13 +17,13 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0),
-      body: Container(
-        child: SafeArea(
+      body: ThemeBackgroundImage(
+        imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
+        widget: SafeArea(
           child: Stack(
+            fit: StackFit.loose,
             children: <Widget>[
-              _buildBackground(),
-              _buildLoginSection(),
+              _buildLoginSection2(),
               BackButton(
                 color: Colors.white,
               ),
@@ -32,19 +34,32 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildBackground() {
+  Widget _buildLoginSection() {
     return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/images/tea-4.jpg'),
-            colorFilter: ColorFilter.mode(
-                Colors.black26.withOpacity(0.5), BlendMode.darken),
-            fit: BoxFit.cover),
+      margin: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.1),
+      child: Column(
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                    width: 5,
+                    color: Colors.lightGreenAccent,
+                    style: BorderStyle.none),
+              ),
+            ),
+          ),
+          Spacing(
+            vertical: 10.0,
+          ),
+          TextFormField(),
+        ],
       ),
     );
   }
 
-  Widget _buildLoginSection() {
+  Widget _buildLoginSection2() {
     return CardWithOverlayButton(
       widget: _buildLoginForm(),
       onPressButton: () {

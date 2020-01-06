@@ -6,20 +6,31 @@ import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
 import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/views/screens/App.screen.dart';
 
 class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ThemeBackgroundImage(
-        widget: _buildContext(context),
+        widget: _buildStartScreen(context),
         imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
       ),
     );
   }
 
-  Widget _buildContext(BuildContext context) {
+  Widget _buildStartScreen(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            AppTheme.raffiaColor.withOpacity(0.4),
+            AppTheme.sandColor.withOpacity(0.2),
+          ],
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
@@ -32,7 +43,7 @@ class StartScreen extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 30.0,
                   fontStyle: FontStyle.italic,
-                  fontFamily: 'Roboto Bold'),
+                  fontFamily: 'OpenSans Bold'),
             ),
           ),
           Spacing(
@@ -43,17 +54,20 @@ class StartScreen extends StatelessWidget {
                 horizontal: MediaQuery.of(context).size.width * 0.05),
             height: MediaQuery.of(context).size.height * 0.3,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 RoundedButton(
-                  buttonLabel: 'Sign in',
+                  buttonLabel: 'Sign In',
                   onPress: () {
                     Navigator.pushNamed(context, RoutingPath.loginRoute);
                   },
                 ),
+                Spacing(
+                  vertical: 15.0,
+                ),
                 RoundedButton(
-                  buttonLabel: 'Sign up',
+                  buttonLabel: 'Sign Up',
                   fillColor: Colors.white,
                   textColor: AppTheme.sunsetOrangeColor,
                   buttonBorder: BorderSide(
