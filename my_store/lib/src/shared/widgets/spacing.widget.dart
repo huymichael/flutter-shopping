@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Spacing extends StatelessWidget {
-  final num horizontal;
-  final num vertical;
+  final double horizontal;
+  final double vertical;
 
   Spacing({this.horizontal, this.vertical});
 

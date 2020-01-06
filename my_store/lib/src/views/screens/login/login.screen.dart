@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/card_with_overlay_button.widget.dart';
+import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/rounded_text_field.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
@@ -19,16 +21,40 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: ThemeBackgroundImage(
         imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
-        widget: SafeArea(
-          child: Stack(
-            fit: StackFit.loose,
-            children: <Widget>[
-              _buildLoginSection2(),
-              BackButton(
-                color: Colors.white,
+        widget: _buildLogin(),
+      ),
+    );
+  }
+
+  Widget _buildLogin() {
+    return Container(
+      child: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            BackButton(
+              color: Colors.white,
+            ),
+            CenterCard(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
+              cardContent: Column(
+                children: <Widget>[
+                  Text(
+                    'Login',
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontFamily: 'OpenSans Bold', fontSize: 30.0),
+                  ),
+                  Spacing(vertical: 50,),
+                  RoundedTextField(),
+                  Spacing(vertical: 50,),
+                  RoundedButton(
+                    onPress: () {},
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

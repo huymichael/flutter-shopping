@@ -6,7 +6,6 @@ import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
 import 'package:my_store/src/utils/app_theme.utils.dart';
-import 'package:my_store/src/views/screens/App.screen.dart';
 
 class StartScreen extends StatelessWidget {
   @override
@@ -31,57 +30,59 @@ class StartScreen extends StatelessWidget {
           ],
         ),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.1),
-            child: Text(
-              'Tea…\n is a religion of the art of life.',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30.0,
-                  fontStyle: FontStyle.italic,
-                  fontFamily: 'OpenSans Bold'),
+      child: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.1),
+              child: Text(
+                'Tea…\n is a religion of the art of life.',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30.0,
+                    fontStyle: FontStyle.italic,
+                    fontFamily: 'OpenSans Bold'),
+              ),
             ),
-          ),
-          Spacing(
-            vertical: 150.0,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.05),
-            height: MediaQuery.of(context).size.height * 0.3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                RoundedButton(
-                  buttonLabel: 'Sign In',
-                  onPress: () {
-                    Navigator.pushNamed(context, RoutingPath.loginRoute);
-                  },
-                ),
-                Spacing(
-                  vertical: 15.0,
-                ),
-                RoundedButton(
-                  buttonLabel: 'Sign Up',
-                  fillColor: Colors.white,
-                  textColor: AppTheme.sunsetOrangeColor,
-                  buttonBorder: BorderSide(
-                    color: AppTheme.sunsetOrangeColor,
-                    style: BorderStyle.solid,
+            Spacing(
+              vertical: 150.0,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.05),
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  RoundedButton(
+                    buttonLabel: 'Sign In',
+                    onPress: () {
+                      Navigator.pushNamed(context, RoutingPath.loginRoute);
+                    },
                   ),
-                  onPress: () {
-                    Navigator.pushNamed(context, RoutingPath.registerRoute);
-                  },
-                ),
-              ],
+                  Spacing(
+                    vertical: 15.0,
+                  ),
+                  RoundedButton(
+                    buttonLabel: 'Sign Up',
+                    fillColor: Colors.white,
+                    textColor: AppTheme.sunsetOrangeColor,
+                    buttonBorder: BorderSide(
+                      color: AppTheme.sunsetOrangeColor,
+                      style: BorderStyle.solid,
+                    ),
+                    onPress: () {
+                      Navigator.pushNamed(context, RoutingPath.registerRoute);
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
