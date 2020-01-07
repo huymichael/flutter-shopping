@@ -26,6 +26,7 @@ class AppTheme {
   static final customTheme = ThemeData(
       primaryColor: AppTheme.sunsetOrangeColor,
       scaffoldBackgroundColor: AppTheme.aliceBlue,
+      errorColor: AppTheme.dangerColor,
       appBarTheme: AppBarTheme(
         color: AppTheme.primaryColor,
       ),

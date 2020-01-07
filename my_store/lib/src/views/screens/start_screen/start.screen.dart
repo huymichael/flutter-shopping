@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
+import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/routes/routes_path.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
@@ -39,11 +40,7 @@ class StartScreen extends StatelessWidget {
                   horizontal: MediaQuery.of(context).size.width * 0.1),
               child: Text(
                 'Tea…\n is a religion of the art of life.',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                    fontStyle: FontStyle.italic,
-                    fontFamily: 'OpenSans Bold'),
+                style: StylingConstant.kStartScreenSlogan,
               ),
             ),
             Spacing(

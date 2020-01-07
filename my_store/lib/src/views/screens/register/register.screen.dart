@@ -1,10 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:my_store/src/constants/image.constant.dart';
+import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/routes/routes_path.dart';
-import 'package:my_store/src/shared/widgets/card_with_overlay_button.widget.dart';
-import 'package:my_store/src/shared/widgets/rounded_text_field.widget.dart';
+import 'package:my_store/src/shared/widgets/break_line.widget.dart';
+import 'package:my_store/src/shared/widgets/card_center.widget.dart';
+import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
-import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
+import 'package:my_store/src/utils/form.utils.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -12,113 +17,153 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+  final _formKey = FormUtils().createFormKey;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0),
-      body: SafeArea(
+      body: ThemeBackgroundImage(
+        imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
+        widget: _buildRegisterScreen(),
+      ),
+    );
+  }
+
+  Widget _buildRegisterScreen() {
+    return Container(
+      child: SafeArea(
         child: Stack(
           children: <Widget>[
-            _buildBackground(),
-            _buildRegisterSection(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildBackground() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/images/tea-10.jpg'),
-            colorFilter: ColorFilter.mode(
-                Colors.black26.withOpacity(0.5), BlendMode.darken),
-            fit: BoxFit.cover),
-      ),
-    );
-  }
-
-  Widget _buildRegisterSection() {
-    return CardWithOverlayButton(
-      widget: _registerSection(),
-      onPressButton: () {
-        if (_fbKey.currentState.saveAndValidate()) {
-          print(_fbKey.currentState.value);
-        }
-      },
-      buttonLabel: 'Create',
-    );
-  }
-
-  Widget _registerSection() {
-    return Column(
-      children: <Widget>[
-        Text(
-          'Create Account',
-          style: TextStyle(fontFamily: 'Roboto Bold', fontSize: 30.0),
-        ),
-        Spacing(
-          vertical: 20.0,
-        ),
-        Column(
-          children: <Widget>[
-            RoundedTextField(
-              fieldController: null,
-              placeHolder: 'Username',
-            ),
-            Spacing(
-              vertical: 25.0,
-            ),
-            RoundedTextField(
-              fieldController: null,
-              placeHolder: 'Email Address',
-            ),
-            Spacing(
-              vertical: 25.0,
-            ),
-            RoundedTextField(
-              fieldController: null,
-              placeHolder: 'Password',
-              isObscureText: true,
-            ),
-            Spacing(
-              vertical: 25.0,
-            ),
-            RoundedTextField(
-              fieldController: null,
-              placeHolder: 'Confirm password',
-              isObscureText: true,
-            ),
-          ],
-        ),
-        Spacing(
-          vertical: 15.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            Text(
-              'Already have an account?',
-              style: TextStyle(color: Colors.grey),
-            ),
-            Spacing(
-              horizontal: 5.0,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, RoutingPath.loginRoute);
+            BackButton(
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pushNamed(context, RoutingPath.rootRoute);
               },
-              child: Text(
-                'Sign in',
-                style: TextStyle(color: AppTheme.sunsetOrangeColor),
+            ),
+            CenterCard(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+              cardContent: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text(
+                    'Create your account',
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(fontFamily: 'OpenSans Bold', fontSize: 25.0),
+                  ),
+                  Spacing(
+                    vertical: 20,
+                  ),
+                  _buildRegisterForm(),
+                  _buildActionSection(),
+                ],
               ),
-            )
+            ),
           ],
         ),
-      ],
+      ),
+    );
+  }
+
+  Widget _buildRegisterForm() {
+    return FormBuilder(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
+          FormBuilderTextField(
+            attribute: 'email',
+            maxLines: 1,
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.mail_outline),
+              isDense: true,
+              hintText: 'Email',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+            validators: [
+              FormBuilderValidators.required(
+                  errorText: 'Please enter an email address')
+            ],
+          ),
+          Spacing(
+            vertical: 20.0,
+          ),
+          FormBuilderTextField(
+            attribute: 'fullName',
+            maxLines: 1,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.person),
+              isDense: true,
+              hintText: 'Full name',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+            validators: [
+              FormBuilderValidators.required(
+                  errorText: 'Please enter your name')
+            ],
+          ),
+          Spacing(
+            vertical: 20.0,
+          ),
+          FormBuilderTextField(
+            attribute: 'password',
+            maxLines: 1,
+            decoration: InputDecoration(
+              prefixIcon: Icon(Icons.lock_outline),
+              isDense: true,
+              hintText: 'Password',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+            validators: [
+              FormBuilderValidators.required(
+                  errorText: 'Please enter your password'),
+              FormBuilderValidators.minLength(6,
+                  errorText: 'Password should be at least 6 characters long')
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          RoundedButton(
+            onPress: () {
+              if (_formKey.currentState.saveAndValidate()) {
+                print(_formKey.currentState.value);
+              }
+            },
+            buttonLabel: 'Sign up',
+          ),
+          Spacing(
+            vertical: 20.0,
+          ),
+          LineBreak(),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, RoutingPath.loginRoute);
+            },
+            child: Text(
+              'Sign in instead',
+              textAlign: TextAlign.center,
+              style: StylingConstant.kAnchorText,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

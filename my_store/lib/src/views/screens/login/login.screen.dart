@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_store/src/constants/image.constant.dart';
+import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/shared/widgets/break_line.widget.dart';
 import 'package:my_store/src/shared/widgets/card_center.widget.dart';
-import 'package:my_store/src/shared/widgets/card_with_overlay_button.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
-import 'package:my_store/src/shared/widgets/rounded_text_field.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
 import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/utils/form.utils.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,41 +18,48 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool hidePassword = true;
+  final _formKey = FormUtils().createFormKey;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ThemeBackgroundImage(
-        imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
-        widget: _buildLogin(),
+        imageUrl: ImageConstant.LOGIN_SCREEN_BACKGROUND,
+        widget: _buildLoginScreen(),
       ),
     );
   }
 
-  Widget _buildLogin() {
+  Widget _buildLoginScreen() {
     return Container(
       child: SafeArea(
         child: Stack(
           children: <Widget>[
             BackButton(
               color: Colors.white,
+              onPressed: () {
+                Navigator.pushNamed(context, RoutingPath.rootRoute);
+              },
             ),
             CenterCard(
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
               cardContent: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text(
                     'Login',
                     textAlign: TextAlign.center,
                     style:
-                        TextStyle(fontFamily: 'OpenSans Bold', fontSize: 30.0),
+                        TextStyle(fontFamily: 'OpenSans Bold', fontSize: 25.0),
                   ),
-                  Spacing(vertical: 50,),
-                  RoundedTextField(),
-                  Spacing(vertical: 50,),
-                  RoundedButton(
-                    onPress: () {},
-                  )
+                  Spacing(
+                    vertical: 20,
+                  ),
+                  _buildLoginForm(),
+                  _buildActionSection(),
                 ],
               ),
             ),
@@ -60,107 +69,122 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildLoginSection() {
-    return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.1),
+  Widget _buildLoginForm() {
+    return FormBuilder(
+      key: _formKey,
       child: Column(
         children: <Widget>[
-          TextFormField(
+          FormBuilderTextField(
+            attribute: "username",
+            keyboardType: TextInputType.emailAddress,
+            maxLines: 1,
             decoration: InputDecoration(
+              hintText: 'Email',
+              isDense: true,
+              prefixIcon: Icon(Icons.mail_outline),
               border: OutlineInputBorder(
-                borderSide: BorderSide(
-                    width: 5,
-                    color: Colors.lightGreenAccent,
-                    style: BorderStyle.none),
+                borderRadius: BorderRadius.circular(15.0),
               ),
             ),
+            validators: [
+              FormBuilderValidators.required(
+                  errorText: 'Please enter an email address')
+            ],
           ),
           Spacing(
-            vertical: 10.0,
+            vertical: 20.0,
           ),
-          TextFormField(),
+          FormBuilderTextField(
+            attribute: "password",
+            obscureText: hidePassword,
+            maxLines: 1,
+            decoration: InputDecoration(
+              hintText: 'Password',
+              prefixIcon: Icon(Icons.lock_outline),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: hidePassword
+                    ? Image.asset(
+                        ImageConstant.EYE_OUTLINE_ICON,
+                        color: AppTheme.sunsetOrangeColor,
+                        width: 24.0,
+                        height: 24.0,
+                      )
+                    : Icon(Icons.remove_red_eye),
+              ),
+              isDense: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+            ),
+            validators: [
+              FormBuilderValidators.required(
+                  errorText: 'Please enter your password'),
+              FormBuilderValidators.minLength(6,
+                  errorText: 'Password should be at least 6 characters long')
+            ],
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildLoginSection2() {
-    return CardWithOverlayButton(
-      widget: _buildLoginForm(),
-      onPressButton: () {
-        print('login to app');
-      },
-      buttonLabel: 'Login',
-    );
-  }
-
-  Widget _buildLoginForm() {
-    return Column(
-      children: <Widget>[
-        Text(
-          'Login',
-          style: TextStyle(fontFamily: 'Roboto Bold', fontSize: 30.0),
-        ),
-        Spacing(
-          vertical: 20.0,
-        ),
-        RoundedTextField(
-          fieldController: null,
-          prefixIcon: Icon(Icons.person_outline),
-          textInputType: TextInputType.emailAddress,
-          placeHolder: 'Username',
-        ),
-        Spacing(
-          vertical: 25.0,
-        ),
-        RoundedTextField(
-          isObscureText: true,
-          fieldController: null,
-          prefixIcon: Icon(Icons.lock_outline),
-          placeHolder: 'Password',
-        ),
-        Column(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.centerRight,
-              child: FlatButton(
-                padding: EdgeInsets.all(0),
-                onPressed: () {
-                  print('forgot password');
+  Widget _buildActionSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          RoundedButton(
+            onPress: () {
+              if (_formKey.currentState.saveAndValidate()) {
+                print(_formKey.currentState.value);
+              }
+            },
+            buttonLabel: 'Log in',
+          ),
+          Spacing(
+            vertical: 20.0,
+          ),
+          LineBreak(),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              InkWell(
+                onTap: () {
+                  print('move to forgot password screen. NOT IMPLEMENT YET');
                 },
-                child: Text(
-                  'Forgot password?',
-                  style: TextStyle(color: Colors.grey),
+                child:
+                    Text('Can\'t log in?', style: StylingConstant.kAnchorText),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 8.0, right: 8.0),
+                alignment: Alignment.center,
+                child: Icon(
+                  Icons.brightness_1,
+                  color: Colors.grey,
+                  size: 5.0,
                 ),
               ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    'New user?',
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                  Spacing(
-                    horizontal: 5.0,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RoutingPath.registerRoute);
-                    },
-                    child: Text(
-                      'Sign up',
-                      style: TextStyle(color: AppTheme.sunsetOrangeColor),
-                    ),
-                  )
-                ],
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, RoutingPath.registerRoute);
+                },
+                child: Text(
+                  'Sign up for an account',
+                  style: StylingConstant.kAnchorText,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
