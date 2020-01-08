@@ -26,6 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: ThemeBackgroundImage(
         imageUrl: ImageConstant.LOGIN_SCREEN_BACKGROUND,
+        colorFilter:
+            ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.darken),
         widget: _buildLoginScreen(),
       ),
     );
@@ -141,9 +143,11 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           RoundedButton(
             onPress: () {
-              if (_formKey.currentState.saveAndValidate()) {
-                print(_formKey.currentState.value);
-              }
+              Navigator.pushNamed(context, RoutingPath.category);
+//              if (_formKey.currentState.saveAndValidate()) {
+//                print(_formKey.currentState.value);
+//                Navigator.pushNamed(context, RoutingPath.category);
+//              }
             },
             buttonLabel: 'Log in',
           ),

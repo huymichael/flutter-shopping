@@ -22,5 +22,7 @@ class AppRoutes {
         handler: loginHandler, transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.registerRoute,
         handler: registerHandler, transitionType: TransitionType.inFromRight);
+    router.define(RoutingPath.category,
+        handler: categoryHandler, transitionType: TransitionType.material);
   }
 }

@@ -10,4 +10,6 @@ class StylingConstant {
       fontFamily: 'OpenSans Bold');
   static const TextStyle kAnchorText =
       TextStyle(fontSize: 10.0, color: AppTheme.sunsetOrangeColor);
+  static const TextStyle kAppbarTitle = TextStyle(
+      color: AppTheme.gray40Color, fontFamily: 'OpenSans Bold', fontSize: 18.0);
 }
