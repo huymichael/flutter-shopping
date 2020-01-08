@@ -56,6 +56,7 @@ class CategoryScreen extends StatelessWidget {
 
   Widget _buildAppbar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       title: Text(
         'Shop by category',
