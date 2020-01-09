@@ -9,5 +9,13 @@ class StylingConstant {
       fontStyle: FontStyle.italic,
       fontFamily: 'OpenSans Bold');
   static const TextStyle kAnchorText =
-      TextStyle(fontSize: 10.0, color: AppTheme.sunsetOrangeColor);
+      TextStyle(fontSize: 12.0, color: AppTheme.sunsetOrangeColor);
+  static const TextStyle kAppbarTitle = TextStyle(
+      color: AppTheme.gray40Color, fontFamily: 'OpenSans Bold', fontSize: 18.0);
+  static final ColorFilter kBlackBackgroundFilter =
+      ColorFilter.mode(Colors.black54.withOpacity(0.6), BlendMode.hardLight);
+  static const TextStyle kLargeBoldTitle =
+      TextStyle(color: Colors.white, fontSize: 35, fontFamily: 'OpenSans Bold');
+  static const TextStyle kLightSubtitle = TextStyle(
+      color: Colors.white, fontFamily: 'OpenSans Light', fontSize: 12.0);
 }

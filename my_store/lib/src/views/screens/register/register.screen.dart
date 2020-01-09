@@ -23,7 +23,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ThemeBackgroundImage(
-        imageUrl: ImageConstant.START_SCREEN_BACKGROUND,
+        imageUrl: ImageConstant.REGISTER_SCREEN_BACKGROUND,
+        colorFilter:
+            ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
         widget: _buildRegisterScreen(),
       ),
     );
