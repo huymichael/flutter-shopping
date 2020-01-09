@@ -10,7 +10,7 @@ class CenterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 35.0, horizontal: 30.0),
+      margin: EdgeInsets.symmetric(vertical: 35.0, horizontal: 15.0),
       alignment: Alignment.center,
       child: SingleChildScrollView(
         physics: BouncingScrollPhysics(),

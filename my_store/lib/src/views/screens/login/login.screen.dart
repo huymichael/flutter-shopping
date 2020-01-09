@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             CenterCard(
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
+                  EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
               cardContent: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
