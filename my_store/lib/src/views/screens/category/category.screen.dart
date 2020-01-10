@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
+import 'package:my_store/src/routes/routes_path.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -8,27 +9,27 @@ class CategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppbar(),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.store_mall_directory),
-            title: Text('Shop'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text('Cart'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('Profile'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.more_horiz),
-            title: Text('More'),
-          ),
-        ],
-      ),
+//      bottomNavigationBar: BottomNavigationBar(
+//        type: BottomNavigationBarType.fixed,
+//        items: [
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.store_mall_directory),
+//            title: Text('Shop'),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.shopping_cart),
+//            title: Text('Cart'),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.person),
+//            title: Text('Profile'),
+//          ),
+//          BottomNavigationBarItem(
+//            icon: Icon(Icons.more_horiz),
+//            title: Text('More'),
+//          ),
+//        ],
+//      ),
       body: Container(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -37,11 +38,12 @@ class CategoryScreen extends StatelessWidget {
             children: <Widget>[
               BackgroundCategorySection(
                   onTap: () {
-                    print('Navigate to Tea page');
+                    Navigator.pushNamed(
+                        context, RoutingPath.tea_feat_categories);
                   },
                   backgroundUrl: ImageConstant.CATEGORY_TEA,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
-                  title: 'Tea',
+                  title: 'Teas',
                   titleStyle: StylingConstant.kLargeBoldTitle,
                   subTitle:
                       'Let yourself fall in love with the aromas and flavours of our best selection.'),

@@ -24,5 +24,8 @@ class AppRoutes {
         handler: registerHandler, transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.category,
         handler: categoryHandler, transitionType: TransitionType.material);
+    router.define(RoutingPath.tea_feat_categories,
+        handler: teaFeatCategoryHandler,
+        transitionType: TransitionType.inFromRight);
   }
 }
