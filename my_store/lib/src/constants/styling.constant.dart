@@ -16,6 +16,8 @@ class StylingConstant {
       ColorFilter.mode(Colors.black54.withOpacity(0.6), BlendMode.hardLight);
   static const TextStyle kLargeBoldTitle =
       TextStyle(color: Colors.white, fontSize: 35, fontFamily: 'OpenSans Bold');
+  static const TextStyle kMediumBoldTitle =
+      TextStyle(color: Colors.white, fontSize: 25, fontFamily: 'OpenSans Bold');
   static const TextStyle kLightSubtitle = TextStyle(
       color: Colors.white, fontFamily: 'OpenSans Light', fontSize: 12.0);
 }

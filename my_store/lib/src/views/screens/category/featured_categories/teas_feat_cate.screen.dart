@@ -1,18 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
+import 'package:my_store/src/data/featured_category.data.dart';
+import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class TeasFeaturedCategoryScreen extends StatelessWidget {
+  final listItem = FeatureCategoryData().categoriesList;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppbar(),
       body: Container(
+        padding: EdgeInsets.all(10),
         height: double.maxFinite,
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: _buildTeasCategories(),
-          ),
+        width: double.maxFinite,
+        child: SafeArea(
+          child: _buildTeasCategories(),
         ),
       ),
     );
@@ -20,46 +25,47 @@ class TeasFeaturedCategoryScreen extends StatelessWidget {
 
   Widget _buildTeasCategories() {
     return Container(
-      child: Wrap(
-        direction: Axis.horizontal,
-        spacing: 1,
-        alignment: WrapAlignment.spaceEvenly,
-        children: <Widget>[
-          Container(
-            height: 180,
-            width: 100,
-            color: Colors.cyan,
-          ),
-          Container(
-            height: 180,
-            width: 180,
-            color: Colors.redAccent,
-          ),
-          Container(
-            height: 180,
-            width: 180,
-            color: Colors.lightGreenAccent,
-          ),
-          Container(
-            height: 180,
-            width: 180,
-            color: Colors.lightBlueAccent,
-          ),
-          Container(
-            height: 180,
-            width: 180,
-            color: Colors.amberAccent,
-          ),
-          Container(
-            height: 180,
-            width: 180,
-            color: Colors.red,
-          ),
-        ],
+      child: GridView.count(
+        physics: BouncingScrollPhysics(),
+        crossAxisCount: 2,
+        children: listItem
+            .map((item) => Card(
+                  child: BackgroundCategorySection(
+                    onTap: () {
+                      print(item.categoryTitle);
+                    },
+                    backgroundUrl: item.imageUrl,
+                    backgroundFilterColor:
+                        StylingConstant.kBlackBackgroundFilter,
+                    title: item.categoryTitle,
+                    titleStyle: StylingConstant.kMediumBoldTitle,
+                  ),
+                ))
+            .toList(),
       ),
     );
   }
 
+//
+//  GridView.builder(
+//  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//  crossAxisCount: 2,
+//  mainAxisSpacing: 3.0,
+//  crossAxisSpacing: 3.0,
+//  ),
+//  itemCount: listItem.length,
+//  itemBuilder: (BuildContext context, int index) {
+//  return BackgroundCategorySection(
+//  onTap: () {
+//  print(listItem[index].categoryTitle);
+//  },
+//  backgroundUrl: listItem[index].imageUrl,
+//  backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
+//  title: listItem[index].categoryTitle,
+//  titleStyle: StylingConstant.kMediumBoldTitle,
+//  );
+//  },
+//  )
   Widget _buildAppbar() {
     return AppBar(
       centerTitle: true,
