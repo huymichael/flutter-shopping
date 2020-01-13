@@ -44,7 +44,7 @@ class CategoryScreen extends StatelessWidget {
                   backgroundUrl: ImageConstant.CATEGORY_TEA,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
                   title: 'Teas',
-                  titleStyle: StylingConstant.kLargeBoldTitle,
+                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'Let yourself fall in love with the aromas and flavours of our best selection.'),
               BackgroundCategorySection(
@@ -54,7 +54,7 @@ class CategoryScreen extends StatelessWidget {
                   backgroundUrl: ImageConstant.CATEGORY_TEAPOTS,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
                   title: 'Teapots',
-                  titleStyle: StylingConstant.kLargeBoldTitle,
+                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'The iconic tea accessory that you cannot miss out on'),
               BackgroundCategorySection(
@@ -64,7 +64,7 @@ class CategoryScreen extends StatelessWidget {
                   backgroundUrl: ImageConstant.CATEGORY_TEA_CUPS,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
                   title: 'Tea Cups',
-                  titleStyle: StylingConstant.kLargeBoldTitle,
+                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'Discover our most exclusive designs. With or without filter, you can choose the one you like most!'),
               BackgroundCategorySection(
@@ -74,7 +74,7 @@ class CategoryScreen extends StatelessWidget {
                   backgroundUrl: ImageConstant.CATEGORY_TEA_INFUSERS,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
                   title: 'Infusers',
-                  titleStyle: StylingConstant.kLargeBoldTitle,
+                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'Make the most of the aroma and flavour of your loose tea with one of these original infusers'),
               BackgroundCategorySection(
@@ -84,7 +84,7 @@ class CategoryScreen extends StatelessWidget {
                   backgroundUrl: ImageConstant.CATEGORY_TEA_ACCESSORIES,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
                   title: 'Accessories',
-                  titleStyle: StylingConstant.kLargeBoldTitle,
+                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'Complement your experience with one of these practical accessories'),
             ],

@@ -3,5 +3,5 @@ class FeatureCategories {
   final String imageUrl;
   final String categorySubtitle;
 
-  FeatureCategories(this.categoryTitle, this.imageUrl, this.categorySubtitle);
+  FeatureCategories({this.categoryTitle, this.imageUrl, this.categorySubtitle});
 }

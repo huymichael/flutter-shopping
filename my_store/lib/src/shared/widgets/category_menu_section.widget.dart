@@ -35,9 +35,9 @@ class BackgroundCategorySection extends StatelessWidget {
         child: ListTile(
           title: Text(title,
               textAlign: TextAlign.center,
-              style: titleStyle ?? StylingConstant.kLargeBoldTitle),
+              style: titleStyle ?? StylingConstant.kLargeBoldWhiteTitle),
           subtitle: Text(
-            subTitle??'',
+            subTitle ?? '',
             textAlign: TextAlign.center,
             style: subTitleStyle ?? StylingConstant.kLightSubtitle,
           ),

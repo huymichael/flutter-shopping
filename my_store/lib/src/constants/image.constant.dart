@@ -12,9 +12,7 @@ class ImageConstant {
   static const String CATEGORY_GREEN_TEA = 'assets/images/green_tea.jpg';
   static const String CATEGORY_BLACK_TEA = 'assets/images/black_tea.jpg';
   static const String CATEGORY_WHITE_TEA = 'assets/images/white_tea.jpg';
-  static const String CATEGORY_YELLOW_TEA = 'assets/images/yellow_tea.jpg';
   static const String CATEGORY_OOLONG_TEA = 'assets/images/oolong_tea.jpg';
   static const String CATEGORY_PUERH_TEA = 'assets/images/puerh_tea.jpg';
-  static const String CATEGORY_HEI_CHA = 'assets/images/hei_cha.jpg';
-
+  static const String CATEGORY_MATCHA_TEA = 'assets/images/matcha_tea.jpg';
 }

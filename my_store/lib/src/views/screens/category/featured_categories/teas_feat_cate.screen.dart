@@ -4,9 +4,10 @@ import 'package:flutter/rendering.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/data/featured_category.data.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
+import 'package:my_store/src/shared/widgets/rounded_media_card.widget.dart';
 
 class TeasFeaturedCategoryScreen extends StatelessWidget {
-  final listItem = FeatureCategoryData().categoriesList;
+  final listItem = FeatureCategoryData().featuredTeaList;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,6 @@ class TeasFeaturedCategoryScreen extends StatelessWidget {
       appBar: _buildAppbar(),
       body: Container(
         padding: EdgeInsets.all(10),
-        height: double.maxFinite,
         width: double.maxFinite,
         child: SafeArea(
           child: _buildTeasCategories(),
@@ -24,48 +24,50 @@ class TeasFeaturedCategoryScreen extends StatelessWidget {
   }
 
   Widget _buildTeasCategories() {
+//    return Card(
+//      elevation: 1,
+//      shape: RoundedRectangleBorder(
+//        borderRadius: BorderRadius.circular(10),
+//      ),
+//      child: Column(
+//        mainAxisSize: MainAxisSize.min,
+//        crossAxisAlignment: CrossAxisAlignment.start,
+//        children: <Widget>[
+//          ClipRRect(
+//            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+//            child: Image.asset(
+//              ImageConstant.CATEGORY_MATCHA_TEA,
+//              fit: BoxFit.cover,
+//            ),
+//          ),
+//          Padding(
+//            padding: const EdgeInsets.all(8.0),
+//            child: Text('ollalala'),
+//          )
+//        ],
+//      ),
+//    );
     return Container(
       child: GridView.count(
         physics: BouncingScrollPhysics(),
         crossAxisCount: 2,
+        crossAxisSpacing: 4.0,
+        mainAxisSpacing: 4.0,
         children: listItem
-            .map((item) => Card(
-                  child: BackgroundCategorySection(
-                    onTap: () {
-                      print(item.categoryTitle);
-                    },
-                    backgroundUrl: item.imageUrl,
-                    backgroundFilterColor:
-                        StylingConstant.kBlackBackgroundFilter,
-                    title: item.categoryTitle,
-                    titleStyle: StylingConstant.kMediumBoldTitle,
-                  ),
-                ))
+            .map(
+              (item) => BackgroundCategorySection(
+                onTap: () {},
+                backgroundUrl: item.imageUrl,
+                title: item.categoryTitle,
+                titleStyle: StylingConstant.kMediumBoldWhiteTitle,
+                backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
+              ),
+            )
             .toList(),
       ),
     );
   }
 
-//
-//  GridView.builder(
-//  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//  crossAxisCount: 2,
-//  mainAxisSpacing: 3.0,
-//  crossAxisSpacing: 3.0,
-//  ),
-//  itemCount: listItem.length,
-//  itemBuilder: (BuildContext context, int index) {
-//  return BackgroundCategorySection(
-//  onTap: () {
-//  print(listItem[index].categoryTitle);
-//  },
-//  backgroundUrl: listItem[index].imageUrl,
-//  backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
-//  title: listItem[index].categoryTitle,
-//  titleStyle: StylingConstant.kMediumBoldTitle,
-//  );
-//  },
-//  )
   Widget _buildAppbar() {
     return AppBar(
       centerTitle: true,
