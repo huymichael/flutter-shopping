@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           RoundedButton(
             onPress: () {
-              Navigator.pushNamed(context, RoutingPath.category);
+              Navigator.pushNamed(context, RoutingPath.featuredCategory);
 //              if (_formKey.currentState.saveAndValidate()) {
 //                print(_formKey.currentState.value);
 //                Navigator.pushNamed(context, RoutingPath.category);

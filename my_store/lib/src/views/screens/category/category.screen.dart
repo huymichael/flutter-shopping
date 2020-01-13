@@ -38,8 +38,7 @@ class CategoryScreen extends StatelessWidget {
             children: <Widget>[
               BackgroundCategorySection(
                   onTap: () {
-                    Navigator.pushNamed(
-                        context, RoutingPath.tea_feat_categories);
+                    Navigator.pushNamed(context, RoutingPath.featuredTeaRoute);
                   },
                   backgroundUrl: ImageConstant.CATEGORY_TEA,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
@@ -49,7 +48,8 @@ class CategoryScreen extends StatelessWidget {
                       'Let yourself fall in love with the aromas and flavours of our best selection.'),
               BackgroundCategorySection(
                   onTap: () {
-                    print('Navigate to Teapots page');
+                    Navigator.pushNamed(
+                        context, RoutingPath.featuredTeapotRoute);
                   },
                   backgroundUrl: ImageConstant.CATEGORY_TEAPOTS,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
@@ -59,11 +59,12 @@ class CategoryScreen extends StatelessWidget {
                       'The iconic tea accessory that you cannot miss out on'),
               BackgroundCategorySection(
                   onTap: () {
-                    print('Navigate to tea cup page');
+                    Navigator.pushNamed(
+                        context, RoutingPath.featuredTeacupRoute);
                   },
                   backgroundUrl: ImageConstant.CATEGORY_TEA_CUPS,
                   backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
-                  title: 'Tea Cups',
+                  title: 'Tea Cups - Mugs',
                   titleStyle: StylingConstant.kLargeBoldWhiteTitle,
                   subTitle:
                       'Discover our most exclusive designs. With or without filter, you can choose the one you like most!'),

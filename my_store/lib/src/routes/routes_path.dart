@@ -4,6 +4,10 @@ class RoutingPath {
   static const String registerRoute = '/register';
 
   //Categories Endpoint
-  static const String category = '/category';
-  static const String tea_feat_categories = '$category/tea';
+  static const String featuredCategory = '/category';
+  static const String featuredTeaRoute = '$featuredCategory/teas';
+  static const String featuredTeacupRoute = '$featuredCategory/teacups';
+  static const String featuredTeapotRoute = '$featuredCategory/teapots';
+  static const String featuredInfuserRoute = '$featuredCategory/infusers';
+  static const String featuredAccessoryRoute = '$featuredCategory/accessory';
 }
