@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/data/featured_category.data.dart';
+import 'package:my_store/src/middlewares/providers/featured_category.data.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class FeaturedTeacupsScreen extends StatelessWidget {
@@ -19,6 +19,7 @@ class FeaturedTeacupsScreen extends StatelessWidget {
       ),
     );
   }
+
   Widget _buildTeacupCategories() {
     return Container(
       child: GridView.count(
@@ -29,17 +30,18 @@ class FeaturedTeacupsScreen extends StatelessWidget {
         children: listItem
             .map(
               (item) => BackgroundCategorySection(
-            onTap: () {},
-            backgroundUrl: item.imageUrl,
-            title: item.categoryTitle,
-            titleStyle: StylingConstant.kMediumBoldWhiteTitle,
-            backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
-          ),
-        )
+                onTap: () {},
+                backgroundUrl: item.imageUrl,
+                title: item.categoryTitle,
+                titleStyle: StylingConstant.kMediumBoldWhiteTitle,
+                backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
+              ),
+            )
             .toList(),
       ),
     );
   }
+
   Widget _buildAppbar() {
     return AppBar(
       centerTitle: true,

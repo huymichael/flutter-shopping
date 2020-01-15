@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/data/featured_category.data.dart';
+import 'package:my_store/src/middlewares/providers/featured_category.data.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class FeaturedTeasScreen extends StatelessWidget {

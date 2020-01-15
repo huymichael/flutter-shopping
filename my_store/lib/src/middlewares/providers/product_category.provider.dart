@@ -1,8 +1,10 @@
+import 'dart:collection';
+
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/models/product_category.model.dart';
 
 class ProductCategoryProvider {
-  List<ProductCategory> categories = [
+  List<ProductCategory> _categories = [
     ProductCategory(
       productCategoryName: 'Teas',
       description:
@@ -110,7 +112,11 @@ class ProductCategoryProvider {
         productCategoryMedia: ImageConstant.CATEGORY_TEA_ACCESSORIES),
   ];
 
+  UnmodifiableListView<ProductCategory> get productCategory {
+    return UnmodifiableListView(_categories);
+  }
+
   Future<List<ProductCategory>> fetchProductCategoryData() async {
-    return categories;
+    return productCategory;
   }
 }

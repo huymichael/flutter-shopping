@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/data/product_category.data.dart';
+import 'package:my_store/src/middlewares/blocs/produc_category.bloc.dart';
 import 'package:my_store/src/models/product_category.model.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
@@ -16,14 +16,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   @override
   void initState() {
     super.initState();
-    fetchCategoryData();
-  }
-
-  fetchCategoryData() async {
-    List<ProductCategory> productCategories =
-        await ProductCategoryProvider().fetchProductCategoryData();
-    productCategoryList = productCategories;
-    print(productCategoryList);
+    productCategoryBloc.fetchAllCategories();
   }
 
   @override
