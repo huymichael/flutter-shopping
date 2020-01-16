@@ -70,7 +70,7 @@ class ProductCategoryProvider {
               productCategoryMedia: ImageConstant.CATEGORY_TEAPOTS),
         ]),
     ProductCategory(
-        productCategoryName: 'Tea Cups - Mugs',
+        productCategoryName: 'Teacups',
         description:
             'Discover our most exclusive designs. With or without filter, you can choose the one you like most!',
         productCategoryMedia: ImageConstant.CATEGORY_TEA_CUPS,

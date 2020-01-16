@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/middlewares/blocs/produc_category.bloc.dart';
 import 'package:my_store/src/models/product_category.model.dart';
+import 'package:my_store/src/routes/routes_path.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -17,6 +20,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
   void initState() {
     super.initState();
     productCategoryBloc.fetchAllCategories();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    productCategoryBloc.dispose();
   }
 
   @override
@@ -45,26 +54,36 @@ class _CategoryScreenState extends State<CategoryScreen> {
 //        ],
 //      ),
       body: Container(
-        child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            physics: BouncingScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: productCategoryList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 1.0),
-                child: BackgroundCategorySection(
-                  onTap: () {},
-                  backgroundUrl:
-                      productCategoryList[index].productCategoryMedia,
-                  backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
-                  title: productCategoryList[index].productCategoryName,
-                  titleStyle: StylingConstant.kLargeBoldWhiteTitle,
-                  subTitle: productCategoryList[index].description,
-                  subTitleStyle: StylingConstant.kLightSubtitle,
-                ),
-              );
-            }),
+        child: StreamBuilder<List<ProductCategory>>(
+          stream: productCategoryBloc.allProductCategory,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<ProductCategory> listProduct = snapshot.data;
+              return ListView.builder(
+                  itemCount: listProduct.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 1.0),
+                      child: BackgroundCategorySection(
+                        backgroundUrl: listProduct[index].productCategoryMedia,
+                        backgroundFilterColor:
+                            StylingConstant.kBlackBackgroundFilter,
+                        title: listProduct[index].productCategoryName,
+                        subTitle: listProduct[index].description,
+                        onTap: () {
+                          print(listProduct[index].productCategoryName);
+                          print(
+                              '${RoutingPath.featuredCategory}/${listProduct[index].productCategoryName.toLowerCase()}');
+                          Navigator.pushNamed(context,
+                              '${RoutingPath.featuredCategory}/${listProduct[index].productCategoryName.toLowerCase()}');
+                        },
+                      ),
+                    );
+                  });
+            }
+            return Container();
+          },
+        ),
       ),
     );
   }

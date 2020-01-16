@@ -9,5 +9,5 @@ class RoutingPath {
   static const String featuredTeacupRoute = '$featuredCategory/teacups';
   static const String featuredTeapotRoute = '$featuredCategory/teapots';
   static const String featuredInfuserRoute = '$featuredCategory/infusers';
-  static const String featuredAccessoryRoute = '$featuredCategory/accessory';
+  static const String featuredAccessoryRoute = '$featuredCategory/accessories';
 }
