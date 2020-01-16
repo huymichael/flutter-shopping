@@ -22,7 +22,16 @@ class AppRoutes {
         handler: loginHandler, transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.registerRoute,
         handler: registerHandler, transitionType: TransitionType.inFromRight);
-    router.define(RoutingPath.category,
+    router.define(RoutingPath.featuredCategory,
         handler: categoryHandler, transitionType: TransitionType.material);
+    router.define(RoutingPath.featuredTeaRoute,
+        handler: featuredTeaHandler,
+        transitionType: TransitionType.inFromRight);
+    router.define(RoutingPath.featuredTeacupRoute,
+        handler: featuredTeacupHandler,
+        transitionType: TransitionType.inFromRight);
+    router.define(RoutingPath.featuredTeapotRoute,
+        handler: featuredTeapotHandler,
+        transitionType: TransitionType.inFromRight);
   }
 }

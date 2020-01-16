@@ -25,7 +25,6 @@ class BackgroundCategorySection extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        margin: EdgeInsets.only(bottom: 1.0),
         height: 180,
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -36,9 +35,9 @@ class BackgroundCategorySection extends StatelessWidget {
         child: ListTile(
           title: Text(title,
               textAlign: TextAlign.center,
-              style: titleStyle ?? StylingConstant.kLargeBoldTitle),
+              style: titleStyle ?? StylingConstant.kLargeBoldWhiteTitle),
           subtitle: Text(
-            subTitle,
+            subTitle ?? '',
             textAlign: TextAlign.center,
             style: subTitleStyle ?? StylingConstant.kLightSubtitle,
           ),
