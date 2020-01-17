@@ -3,7 +3,7 @@ import 'dart:collection';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/models/product_category.model.dart';
 
-class ProductCategoryProvider {
+class ProductCategoryBlocProvider {
   List<ProductCategory> _categories = [
     ProductCategory(
       productCategoryName: 'Teas',

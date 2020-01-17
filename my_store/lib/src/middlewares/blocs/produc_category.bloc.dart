@@ -2,7 +2,7 @@ import 'package:my_store/src/middlewares/repositories/product_category.repo.dart
 import 'package:my_store/src/models/product_category.model.dart';
 import 'package:rxdart/rxdart.dart';
 
-class ProductCategoryBloc {
+class ProductCategoriesBloc {
   final _productRepository = ProductCategoryRepository();
   final _productCategoryFetcher = PublishSubject<List<ProductCategory>>();
 
@@ -15,9 +15,10 @@ class ProductCategoryBloc {
     _productCategoryFetcher.sink.add(listCategories);
   }
 
-  dispose() {
+  dispose() async {
+    await _productCategoryFetcher.drain();
     _productCategoryFetcher.close();
   }
 }
 
-final productCategoryBloc = ProductCategoryBloc();
+final productCategoryBloc = ProductCategoriesBloc();

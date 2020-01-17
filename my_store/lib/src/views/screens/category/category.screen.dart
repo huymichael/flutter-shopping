@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
@@ -24,8 +22,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     productCategoryBloc.dispose();
+    super.dispose();
   }
 
   @override
