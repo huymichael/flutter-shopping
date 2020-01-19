@@ -63,11 +63,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 1.0),
                       child: BackgroundCategorySection(
-                        backgroundUrl: listProduct[index].productCategoryMedia,
+                        backgroundUrl: listProduct[index].categoryImage,
                         backgroundFilterColor:
                             StylingConstant.kBlackBackgroundFilter,
                         title: listProduct[index].productCategoryName,
-                        subTitle: listProduct[index].description,
+                        subTitle: listProduct[index].categoryDescription,
                         onTap: () {
                           print(listProduct[index].productCategoryName);
                           print(
