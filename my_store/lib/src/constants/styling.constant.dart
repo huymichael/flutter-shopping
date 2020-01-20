@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/utils/app_theme.util.dart';
 
 class StylingConstant {
   static const TextStyle kStartScreenSlogan = TextStyle(

@@ -6,7 +6,7 @@ import 'package:my_store/src/routes/routes_path.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
-import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/utils/app_theme.util.dart';
 
 class StartScreen extends StatelessWidget {
   @override

@@ -1,12 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/middlewares/providers/featured_category.data.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 import 'package:my_store/src/utils/uuid_generator.util.dart';
 
-class FeaturedTeasScreen extends StatelessWidget {
+class FeaturedCategoryScreen extends StatelessWidget {
+  final String categoryName;
+  final String categoryId;
+
+  FeaturedCategoryScreen({this.categoryId, this.categoryName});
+
   final listItem = FeatureCategoryData().featuredTeaList;
 
   @override
@@ -51,7 +54,7 @@ class FeaturedTeasScreen extends StatelessWidget {
     return AppBar(
       centerTitle: true,
       title: Text(
-        'Tea',
+        categoryName ?? 'null',
         style: StylingConstant.kAppbarTitle,
       ),
       backgroundColor: Colors.white,

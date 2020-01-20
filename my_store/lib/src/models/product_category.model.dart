@@ -1,6 +1,8 @@
-import 'package:my_store/src/models/featured_product.model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:my_store/src/models/featured_item.model.dart';
 
 class ProductCategory {
+  final String categoryId;
   final String productCategoryName;
   final String categoryDescription;
   final String categoryImage;
@@ -8,7 +10,8 @@ class ProductCategory {
   List<FeaturedItem> featuredProductItems;
 
   ProductCategory(
-      {this.productCategoryName,
+      {@required this.categoryId,
+      this.productCategoryName,
       this.categoryDescription,
       this.categoryImage,
       this.featuredCategories,

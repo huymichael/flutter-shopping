@@ -9,7 +9,7 @@ import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
-import 'package:my_store/src/utils/form.utils.dart';
+import 'package:my_store/src/utils/form.util.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override

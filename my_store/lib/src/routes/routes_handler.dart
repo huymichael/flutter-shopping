@@ -4,6 +4,7 @@ import 'package:my_store/src/views/screens/category/category.screen.dart';
 import 'package:my_store/src/views/screens/category/featured_categories/featured_teacup.screen.dart';
 import 'package:my_store/src/views/screens/category/featured_categories/featured_teapot.screen.dart';
 import 'package:my_store/src/views/screens/category/featured_categories/featured_teas.screen.dart';
+import 'package:my_store/src/views/screens/category/featured_category.screen.dart';
 import 'package:my_store/src/views/screens/login/login.screen.dart';
 import 'package:my_store/src/views/screens/register/register.screen.dart';
 import 'package:my_store/src/views/screens/start_screen/start.screen.dart';
@@ -35,3 +36,8 @@ Handler featuredInfuserHandler = Handler(
 Handler featuredAccessoryHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
         FeaturedTeasScreen());
+Handler featuredCategoryHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+        FeaturedCategoryScreen(
+          categoryName: params['featuredName']?.first,
+        ));
