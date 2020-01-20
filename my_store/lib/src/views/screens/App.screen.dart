@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/utils/app_theme.util.dart';
 
 import '../../routes/routes.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/shared/widgets/break_line.widget.dart';
 import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';

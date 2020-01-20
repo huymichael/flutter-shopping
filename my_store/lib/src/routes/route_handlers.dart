@@ -10,34 +10,32 @@ import 'package:my_store/src/views/screens/register/register.screen.dart';
 import 'package:my_store/src/views/screens/start_screen/start.screen.dart';
 
 Handler rootHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         StartScreen());
 Handler loginHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         LoginScreen());
 Handler registerHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         RegisterScreen());
 Handler categoryHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         CategoryScreen());
 Handler featuredTeaHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         FeaturedTeasScreen());
 Handler featuredTeapotHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         FeaturedTeapotsScreen());
 Handler featuredTeacupHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         FeaturedTeacupsScreen());
 Handler featuredInfuserHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         FeaturedTeasScreen());
 Handler featuredAccessoryHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         FeaturedTeasScreen());
 Handler featuredCategoryHandler = Handler(
-    handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
-        FeaturedCategoryScreen(
-          categoryName: params['featuredName']?.first,
-        ));
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
+        FeaturedCategoryScreen());
