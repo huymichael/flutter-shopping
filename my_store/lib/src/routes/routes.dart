@@ -1,11 +1,15 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_store/src/routes/routes_handler.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_handlers.dart';
+import 'package:my_store/src/routes/route_paths.dart';
 
 class AppRoutes {
   static Router router = Router();
+
+  static navigateTo(BuildContext context, String path) {
+    return router.navigateTo(context, path);
+  }
 
   static void setupRouter() {
     router.notFoundHandler = Handler(
@@ -22,16 +26,10 @@ class AppRoutes {
         handler: loginHandler, transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.registerRoute,
         handler: registerHandler, transitionType: TransitionType.inFromRight);
-    router.define(RoutingPath.featuredCategory,
+    router.define(RoutingPath.category,
         handler: categoryHandler, transitionType: TransitionType.material);
-    router.define(RoutingPath.featuredTeaRoute,
-        handler: featuredTeaHandler,
-        transitionType: TransitionType.inFromRight);
-    router.define(RoutingPath.featuredTeacupRoute,
-        handler: featuredTeacupHandler,
-        transitionType: TransitionType.inFromRight);
-    router.define(RoutingPath.featuredTeapotRoute,
-        handler: featuredTeapotHandler,
+    router.define(RoutingPath.featuredCategory,
+        handler: featuredCategoryHandler,
         transitionType: TransitionType.inFromRight);
   }
 }

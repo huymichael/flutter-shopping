@@ -1,16 +1,19 @@
-import 'package:my_store/src/models/featured_product.model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:my_store/src/models/featured_item.model.dart';
 
 class ProductCategory {
+  final String categoryId;
   final String productCategoryName;
-  final String description;
-  final String productCategoryMedia;
+  final String categoryDescription;
+  final String categoryImage;
   List<ProductCategory> featuredCategories;
-  List<FeaturedProduct> featuredProducts;
+  List<FeaturedItem> featuredProductItems;
 
   ProductCategory(
-      {this.productCategoryName,
-      this.description,
-      this.productCategoryMedia,
+      {@required this.categoryId,
+      this.productCategoryName,
+      this.categoryDescription,
+      this.categoryImage,
       this.featuredCategories,
-      this.featuredProducts});
+      this.featuredProductItems});
 }

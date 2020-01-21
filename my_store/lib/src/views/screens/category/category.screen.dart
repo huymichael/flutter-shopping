@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/middlewares/blocs/produc_category.bloc.dart';
 import 'package:my_store/src/models/product_category.model.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -24,8 +22,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     productCategoryBloc.dispose();
+    super.dispose();
   }
 
   @override
@@ -65,17 +63,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 1.0),
                       child: BackgroundCategorySection(
-                        backgroundUrl: listProduct[index].productCategoryMedia,
+                        backgroundUrl: listProduct[index].categoryImage,
                         backgroundFilterColor:
                             StylingConstant.kBlackBackgroundFilter,
                         title: listProduct[index].productCategoryName,
-                        subTitle: listProduct[index].description,
+                        subTitle: listProduct[index].categoryDescription,
                         onTap: () {
-                          print(listProduct[index].productCategoryName);
-                          print(
-                              '${RoutingPath.featuredCategory}/${listProduct[index].productCategoryName.toLowerCase()}');
-                          Navigator.pushNamed(context,
-                              '${RoutingPath.featuredCategory}/${listProduct[index].productCategoryName.toLowerCase()}');
+                          Navigator.pushNamed(
+                            context,
+                            '${RoutingPath.category}/${listProduct[index].categoryId}',
+                          );
                         },
                       ),
                     );

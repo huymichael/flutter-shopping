@@ -2,11 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
+import 'package:my_store/src/routes/routes.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
-import 'package:my_store/src/utils/app_theme.utils.dart';
+import 'package:my_store/src/utils/app_theme.util.dart';
 
 class StartScreen extends StatelessWidget {
   @override
@@ -57,7 +58,7 @@ class StartScreen extends StatelessWidget {
                   RoundedButton(
                     buttonLabel: 'Sign In',
                     onPress: () {
-                      Navigator.pushNamed(context, RoutingPath.loginRoute);
+                      AppRoutes.navigateTo(context, RoutingPath.loginRoute);
                     },
                   ),
                   Spacing(
@@ -72,7 +73,7 @@ class StartScreen extends StatelessWidget {
                       style: BorderStyle.solid,
                     ),
                     onPress: () {
-                      Navigator.pushNamed(context, RoutingPath.registerRoute);
+                      AppRoutes.navigateTo(context, RoutingPath.registerRoute);
                     },
                   ),
                 ],

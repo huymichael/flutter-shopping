@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
-import 'package:my_store/src/routes/routes_path.dart';
+import 'package:my_store/src/routes/route_paths.dart';
+import 'package:my_store/src/routes/routes.dart';
 import 'package:my_store/src/shared/widgets/break_line.widget.dart';
 import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
 import 'package:my_store/src/shared/widgets/spacing.widget.dart';
 import 'package:my_store/src/shared/widgets/theme_background.widget.dart';
-import 'package:my_store/src/utils/app_theme.utils.dart';
-import 'package:my_store/src/utils/form.utils.dart';
+import 'package:my_store/src/utils/app_theme.util.dart';
+import 'package:my_store/src/utils/form.util.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             BackButton(
               color: Colors.white,
               onPressed: () {
-                Navigator.pushNamed(context, RoutingPath.rootRoute);
+                AppRoutes.navigateTo(context, RoutingPath.rootRoute);
               },
             ),
             CenterCard(
@@ -143,7 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
         children: <Widget>[
           RoundedButton(
             onPress: () {
-              Navigator.pushNamed(context, RoutingPath.featuredCategory);
+              AppRoutes.navigateTo(context, RoutingPath.category);
+
 //              if (_formKey.currentState.saveAndValidate()) {
 //                print(_formKey.currentState.value);
 //                Navigator.pushNamed(context, RoutingPath.category);
@@ -178,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, RoutingPath.registerRoute);
+                  AppRoutes.navigateTo(context, RoutingPath.registerRoute);
                 },
                 child: Text(
                   'Sign up for an account',
