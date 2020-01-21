@@ -1,46 +1,77 @@
 import 'package:flutter/material.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
+import 'package:my_store/src/middlewares/blocs/produc_category.bloc.dart';
 import 'package:my_store/src/middlewares/providers/featured_category.data.dart';
+import 'package:my_store/src/models/product_category.model.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
-import 'package:my_store/src/utils/uuid_generator.util.dart';
 
-class FeaturedCategoryScreen extends StatelessWidget {
+class FeaturedCategoryScreen extends StatefulWidget {
+  final String featuredId;
 
+  FeaturedCategoryScreen({@required this.featuredId});
+
+  @override
+  _FeaturedCategoryScreenState createState() => _FeaturedCategoryScreenState();
+}
+
+class _FeaturedCategoryScreenState extends State<FeaturedCategoryScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    productCategoryBloc.fetchCategoryByID(widget.featuredId);
+  }
 
   final listItem = FeatureCategoryData().featuredTeaList;
-  static String featuredId;
-  static  RouteSettings settings;
+
   @override
   Widget build(BuildContext context) {
-    settings = ModalRoute.of(context).settings;
+    return StreamBuilder<ProductCategory>(
+      stream: productCategoryBloc.productCategory,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          final ProductCategory category = snapshot.data;
+          return _buildCategoryScreen(category);
+        }
+        return _buildEmptyScreen();
+      },
+    );
+  }
+
+  Widget _buildCategoryScreen(ProductCategory category) {
     return Scaffold(
-      appBar: _buildAppbar(),
+      appBar: _buildAppbar(category.productCategoryName),
       body: Container(
-        padding: EdgeInsets.all(10),
-        width: double.maxFinite,
+        height: double.maxFinite,
         child: SafeArea(
-          child: _buildTeasCategories(context),
+          child: _buildCategoryList(category.featuredCategories),
         ),
       ),
     );
   }
 
-  Widget _buildTeasCategories(BuildContext context) {
+  Widget _buildEmptyScreen() {
+    return Scaffold(
+      body: Container(
+        alignment: Alignment.center,
+        child: Text('No data found!'),
+      ),
+    );
+  }
+
+  Widget _buildCategoryList(List<ProductCategory> listCategory) {
     return Container(
       child: GridView.count(
         physics: BouncingScrollPhysics(),
         crossAxisCount: 2,
         crossAxisSpacing: 4.0,
         mainAxisSpacing: 4.0,
-        children: listItem
+        children: listCategory
             .map(
               (item) => BackgroundCategorySection(
-                onTap: () {
-                  print((settings.arguments));
-//                  print(UuidGenerator().getID());
-                },
-                backgroundUrl: item.imageUrl,
-                title: item.categoryTitle,
+                onTap: () {},
+                backgroundUrl: item.categoryImage,
+                title: item.productCategoryName,
                 titleStyle: StylingConstant.kMediumBoldWhiteTitle,
                 backgroundFilterColor: StylingConstant.kBlackBackgroundFilter,
               ),
@@ -50,11 +81,11 @@ class FeaturedCategoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAppbar() {
+  Widget _buildAppbar(String title) {
     return AppBar(
       centerTitle: true,
       title: Text(
-         'null',
+        title,
         style: StylingConstant.kAppbarTitle,
       ),
       backgroundColor: Colors.white,

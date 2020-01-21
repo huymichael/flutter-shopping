@@ -6,4 +6,6 @@ class ProductCategoryRepository {
 
   Future<List<ProductCategory>> fetchAllCategories() =>
       _categoryProvider.fetchProductCategoryData();
+
+  Future<ProductCategory> fetchCategoryByID(String id)=>_categoryProvider.fetchCategoryByID(id);
 }

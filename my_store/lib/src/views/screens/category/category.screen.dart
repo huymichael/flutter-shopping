@@ -5,7 +5,6 @@ import 'package:my_store/src/middlewares/blocs/produc_category.bloc.dart';
 import 'package:my_store/src/models/product_category.model.dart';
 import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/shared/widgets/category_menu_section.widget.dart';
-import 'package:my_store/src/utils/regex.util.dart';
 
 class CategoryScreen extends StatefulWidget {
   @override
@@ -72,11 +71,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         onTap: () {
                           Navigator.pushNamed(
                             context,
-                            '${RoutingPath.category}/${listProduct[index].productCategoryName.toLowerCase().trim().replaceAll(RegexPattern().spacesBetweenWords, "")}',
-                            arguments:  listProduct[index].categoryId,
+                            '${RoutingPath.category}/${listProduct[index].categoryId}',
                           );
-//                          print(
-//                              '${RoutingPath.category}/${listProduct[index].productCategoryName.toLowerCase().trim().replaceAll(RegexPattern().spacesBetweenWords, "")}');
                         },
                       ),
                     );

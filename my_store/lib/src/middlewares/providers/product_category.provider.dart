@@ -140,4 +140,10 @@ class ProductCategoryBlocProvider {
   Future<List<ProductCategory>> fetchProductCategoryData() async {
     return productCategory;
   }
+
+  Future<ProductCategory> fetchCategoryByID(String categoryID) async {
+    await Future.delayed(Duration(microseconds: 500));
+    return _categories.firstWhere((item) => item.categoryId == categoryID,
+        orElse: () => null);
+  }
 }

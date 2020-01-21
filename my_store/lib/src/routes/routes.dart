@@ -7,6 +7,10 @@ import 'package:my_store/src/routes/route_paths.dart';
 class AppRoutes {
   static Router router = Router();
 
+  static navigateTo(BuildContext context, String path) {
+    return router.navigateTo(context, path);
+  }
+
   static void setupRouter() {
     router.notFoundHandler = Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -24,12 +28,6 @@ class AppRoutes {
         handler: registerHandler, transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.category,
         handler: categoryHandler, transitionType: TransitionType.material);
-    router.define(RoutingPath.featuredTeaRoute,
-        handler: featuredTeaHandler,
-        transitionType: TransitionType.inFromRight);
-    router.define(RoutingPath.featuredTeacupRoute,
-        handler: featuredTeacupHandler,
-        transitionType: TransitionType.inFromRight);
     router.define(RoutingPath.featuredCategory,
         handler: featuredCategoryHandler,
         transitionType: TransitionType.inFromRight);
