@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "746790329398",
+    "firebase_url": "https://tea-store-4db58.firebaseio.com",
+    "project_id": "tea-store-4db58",
+    "storage_bucket": "tea-store-4db58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746790329398:android:73ebcdc0305a83f3198c97",
+        "android_client_info": {
+          "package_name": "com.michaelthai.teashop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746790329398-6rvl5v4rimjhg6f015hcbbsq5nb8lt0b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKGeRptE3pktAPg3dJC7FBOnpnPy0bRyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746790329398-6rvl5v4rimjhg6f015hcbbsq5nb8lt0b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
