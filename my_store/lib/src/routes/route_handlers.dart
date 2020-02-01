@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:my_store/src/services/authentication.service.dart';
 import 'package:my_store/src/views/screens/category/category.screen.dart';
 import 'package:my_store/src/views/screens/category/featured_category.screen.dart';
 import 'package:my_store/src/views/screens/login/login.screen.dart';
@@ -8,7 +9,9 @@ import 'package:my_store/src/views/screens/start_screen/start.screen.dart';
 
 Handler rootHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
-        StartScreen());
+        StartScreen(
+          auth: new AuthenticationService(),
+        ));
 Handler loginHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) =>
         LoginScreen());

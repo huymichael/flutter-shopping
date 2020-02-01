@@ -5,6 +5,7 @@ import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/routes/routes.dart';
+import 'package:my_store/src/services/base_authentication.dart';
 import 'package:my_store/src/shared/widgets/break_line.widget.dart';
 import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
@@ -14,6 +15,7 @@ import 'package:my_store/src/utils/app_theme.util.dart';
 import 'package:my_store/src/utils/form.util.dart';
 
 class LoginScreen extends StatefulWidget {
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }

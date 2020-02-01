@@ -5,6 +5,7 @@ import 'package:my_store/src/constants/image.constant.dart';
 import 'package:my_store/src/constants/styling.constant.dart';
 import 'package:my_store/src/routes/route_paths.dart';
 import 'package:my_store/src/routes/routes.dart';
+import 'package:my_store/src/services/authentication.service.dart';
 import 'package:my_store/src/shared/widgets/break_line.widget.dart';
 import 'package:my_store/src/shared/widgets/card_center.widget.dart';
 import 'package:my_store/src/shared/widgets/round_button.widget.dart';
@@ -19,6 +20,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = FormUtils().createFormKey;
+  AuthenticationService authService = new AuthenticationService();
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
               color: Colors.white,
               onPressed: () {
                 AppRoutes.navigateTo(context, RoutingPath.rootRoute);
-
               },
             ),
             CenterCard(
@@ -118,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           FormBuilderTextField(
             attribute: 'password',
             maxLines: 1,
+            obscureText: true,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.lock_outline),
               isDense: true,
@@ -147,7 +149,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
           RoundedButton(
             onPress: () {
               if (_formKey.currentState.saveAndValidate()) {
-                print(_formKey.currentState.value);
+                var email = _formKey.currentState.value['email'];
+                var password = _formKey.currentState.value['password'];
+                authService.signUp(email, password);
               }
             },
             buttonLabel: 'Sign up',
